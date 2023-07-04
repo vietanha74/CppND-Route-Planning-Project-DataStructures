@@ -1,6 +1,6 @@
 ## LRU CACHE ##
 
-### Database designe###
+### Database designe ###
 I implement this LRU cache by Double linked List compination with HashMap. 
     - Hashmap provides efficient key lookup and insertion operation.
     - Double linked list handling adding, remove, and moving nodes base on HashMap LRU Cache.
