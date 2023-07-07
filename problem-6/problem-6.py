@@ -119,7 +119,38 @@ print (intersection(linked_list_3,linked_list_4))
 ## and two of them must include edge cases, such as null, empty or very large values
 
 ## Test Case 1
+linked_list_1 = LinkedList()
+linked_list_2 = LinkedList()
 
+print(union(linked_list_1, linked_list_2))
+print(intersection(linked_list_1, linked_list_2))
+#Expected Output:
+#None
+#None
 ## Test Case 2
+linked_list_3 = LinkedList()
+linked_list_4 = LinkedList()
+
+linked_list_3.append(5)
+
+print(union(linked_list_3, linked_list_4))
+print(intersection(linked_list_3, linked_list_4))
+#Expected Output:
+#5 -> None
+#None
 
 ## Test Case 3
+linked_list_5 = LinkedList()
+linked_list_6 = LinkedList()
+
+elements = [1, 2, 3, 4, 5]
+
+for element in elements:
+    linked_list_5.append(element)
+    linked_list_6.append(element)
+
+print(union(linked_list_5, linked_list_6))
+print(intersection(linked_list_5, linked_list_6))
+#Expected Output:
+#1 -> 2 -> 3 -> 4 -> 5 -> None
+#1 -> 2 -> 3 -> 4 -> 5 -> None
