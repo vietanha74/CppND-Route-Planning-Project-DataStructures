@@ -26,3 +26,59 @@ def find_files(suffix, path):
             result.extend(find_files(suffix, item_path))
     return result
 
+#Test Case 1:
+#suffix = ".txt"
+#path = "path/to/directory"#
+
+#Directory Structure:
+#- path/
+#  - to/
+#    - directory/
+#      - file1.txt
+#      - file2.txt
+#      - subdir/
+#        - file3.txt
+#        - file4.jpg
+#        - subdir2/
+#          - file5.txt#
+
+#Expected Output:
+#["path/to/directory/file1.txt", "path/to/directory/file2.txt", "path/to/directory/subdir/file3.txt", "path/to/directory/subdir/subdir2/file5.txt"]
+
+#Test Case 2:
+#suffix = ".jpg"
+#path = "path/to/directory"
+#
+#Directory Structure:
+#- path/
+#  - to/
+#    - directory/
+#      - file1.txt
+#      - file2.txt
+#      - subdir/
+#        - file3.txt
+#        - file4.jpg
+#        - subdir2/
+#          - file5.txt
+#
+#Expected Output:
+#["path/to/directory/subdir/file4.jpg"]
+
+#Test Case 3:
+#suffix = ".py"
+#path = "path/to/directory"#
+
+#Directory Structure:
+#- path/
+#  - to/
+#    - directory/
+#      - file1.txt
+#      - file2.txt
+#      - subdir/
+#        - file3.txt
+#        - file4.jpg
+#        - subdir2/
+#          - file5.txt#
+
+#Expected Output:
+#[]
