@@ -49,6 +49,9 @@ def generate_codes(node, code, codes):
         generate_codes(node.right, code + '1', codes)
 
 def huffman_encoding(data):
+    if not data:
+        return "", None
+     
     root = build_huffman_tree(data)
     codes = {}
     generate_codes(root, '', codes)
@@ -62,7 +65,7 @@ def huffman_encoding(data):
 
 def huffman_decoding(encoded_message, huffman_tree):
     decoded_message = ""
-    current_node = tree
+    current_node = huffman_tree
     for bit in encoded_message:
         if bit == "0":
             current_node = current_node.left
@@ -71,12 +74,48 @@ def huffman_decoding(encoded_message, huffman_tree):
         
         if current_node.char:
             decoded_message += current_node.char
-            current_node = tree
+            current_node = huffman_tree
     return decoded_message
 
 
-# Example usage
-a_great_sentence = "The bird is the word"
-encoded_data, tree = huffman_encoding(a_great_sentence)
-decoded_message = huffman_decoding(encoded_data, tree)
-print("Decoded message:", decoded_message)
+
+## Add your own test cases: include at least three test cases
+## and two of them must include edge cases, such as null, empty or very large values
+# Test Case 1: Empty String
+data = ""
+encoded_data, huffman_tree = huffman_encoding(data)
+decoded_data = huffman_decoding(encoded_data, huffman_tree)
+print("Test Case 1:")
+print("Input:", data)
+print("Encoded String:", encoded_data)
+print("Decoded String:", decoded_data)
+print("Expected Output:")
+print("Encoded String: ''")
+print("Decoded String: ''")
+print()
+
+# Test Case 2: Single Character String
+data = "A"
+encoded_data, huffman_tree = huffman_encoding(data)
+decoded_data = huffman_decoding(encoded_data, huffman_tree)
+print("Test Case 2:")
+print("Input:", data)
+print("Encoded String:", encoded_data)
+print("Decoded String:", decoded_data)
+print("Expected Output:")
+print("Encoded String: '0'")
+print("Decoded String: 'A'")
+print()
+
+# Test Case 3: Large String with Repeated Characters
+data = "AAAABBBBCCCCDDDDEEEE"
+encoded_data, huffman_tree = huffman_encoding(data)
+decoded_data = huffman_decoding(encoded_data, huffman_tree)
+print("Test Case 3:")
+print("Input:", data)
+print("Encoded String:", encoded_data)
+print("Decoded String:", decoded_data)
+print("Expected Output:")
+print("Encoded String: '00000000000000001111111111111111000000000000000011111111111111110000000000000000'")
+print("Decoded String: 'AAAABBBBCCCCDDDDEEEE'")
+print()
