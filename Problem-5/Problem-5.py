@@ -59,3 +59,40 @@ blockchain.display_chain()
 # Test Case: Validating integrity
 is_valid = blockchain.validate_integrity()
 print("Is blockchain valid?", is_valid)
+
+#Test Case 1: Adding an empty block
+blockchain = Blockchain()
+blockchain.add_block("")
+blockchain.display_chain()
+#Expected Output:
+#Block Hash: [block_hash]
+#Timestamp: [timestamp]
+#Data: 
+#Previous Hash: [previous_hash]
+
+#Test Case 2: Adding a block with very large data
+blockchain = Blockchain()
+large_data = "A" * 1000000  # A string with a length of 1 million characters
+blockchain.add_block(large_data)
+blockchain.display_chain()
+#Test Case 3: Validating integrity with a tampered block
+blockchain = Blockchain()
+blockchain.add_block("Block 0")
+blockchain.add_block("Block 1")
+blockchain.add_block("Block 2")
+#Expected Output:
+#Block Hash: [block_hash]
+#Timestamp: [timestamp]
+#Data: [large_data]
+#Previous Hash: [previous_hash]
+
+
+# Tampering the second block
+blockchain.head.next.data = "Tampered Data"
+
+is_valid = blockchain.validate_integrity()
+print("Is blockchain valid?", is_valid)
+#Expected Output:
+#Is blockchain valid? False
+
+
