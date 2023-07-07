@@ -71,6 +71,40 @@ class LRUCache:
         return node
 
 # Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
+# Test Case 1: Empty Cache
+cache = LRUCache(5)
+print("Test Case 1:")
+print("Cache Capacity:", cache.capacity)
+print("Get 'A':", cache.get('A'))  # Expected Output: -1 (Key not found)
+cache.put('A', 1)
+print("Put 'A': 1")
+print("Get 'A':", cache.get('A'))  # Expected Output: 1
+print()
+
+# Test Case 2: Full Cache with Eviction
+cache = LRUCache(3)
+print("Test Case 2:")
+print("Cache Capacity:", cache.capacity)
+cache.put('A', 1)
+print("Put 'A': 1")
+cache.put('B', 2)
+print("Put 'B': 2")
+cache.put('C', 3)
+print("Put 'C': 3")
+print("Get 'A':", cache.get('A'))  # Expected Output: 1
+cache.put('D', 4)
+print("Put 'D': 4 (Evicting 'B')")
+print("Get 'B':", cache.get('B'))  # Expected Output: -1 (Evicted)
+print()
+
+# Test Case 3: Large Cache and Values
+cache = LRUCache(10000)
+print("Test Case 3:")
+print("Cache Capacity:", cache.capacity)
+for i in range(10000):
+    cache.put(f'Key{i}', i)
+print("Put 10000 key-value pairs")
+print("Get 'Key0':", cache.get('Key0'))  # Expected Output: 0
+print("Get 'Key5000':", cache.get('Key5000'))  # Expected Output: 5000
+print("Get 'Key9999':", cache.get('Key9999'))  # Expected Output: 9999
+print()
